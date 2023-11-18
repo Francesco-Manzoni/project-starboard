@@ -1,4 +1,4 @@
-import { Box, Typography, useMediaQuery } from '@mui/material';
+import { Box, useMediaQuery } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
@@ -8,6 +8,7 @@ import ListItemText from '@mui/material/ListItemText';
 import React from 'react';
 import { Project } from '../db';
 import theme from '../theme';
+import { ProjectDate } from './ProjectDate';
 import { StarRating } from './StarRating';
 interface ProjectListProps {
   projects: Project[];
@@ -34,15 +35,7 @@ export const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
                   alreadyStarred={project.alreadyStarred}
                   id={project.id!}
                 />
-                <Typography variant='caption'>
-                  {project.createdAt?.toLocaleDateString(navigator.language, {
-                    day: 'numeric',
-                    month: 'numeric',
-                    year: 'numeric',
-                    hour: 'numeric',
-                    minute: 'numeric',
-                  })}
-                </Typography>
+                <ProjectDate date={project.createdAt} />
               </Box>
             }
           >
