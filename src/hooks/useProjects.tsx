@@ -45,9 +45,10 @@ const initializeData = async () => {
       project.createdAt = randomDateGenerator();
       await addProject(project);
     });
+    return await getProjects();
+  } else {
+    return projects;
   }
-
-  return projects || defaultProjects;
 };
 
 export const useProjects = () => {

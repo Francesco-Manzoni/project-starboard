@@ -9,7 +9,6 @@ import {
   AppBar,
   Button,
   FormControl,
-  IconButton,
   InputBase,
   InputLabel,
   MenuItem,
@@ -23,6 +22,7 @@ import { SelectChangeEvent } from '@mui/material/Select';
 import { alpha, styled, useTheme } from '@mui/material/styles';
 import React from 'react';
 import { Project } from '../db';
+import { CustomIconButton } from './CustomIconButton';
 import NewProjectModal from './NewProjectModal';
 interface HeaderProps {
   projects: Project[];
@@ -190,9 +190,9 @@ export const Header: React.FC<HeaderProps> = ({
           </FormControlStyled>
 
           {isMobile ? (
-            <StyledIconButton color='secondary' onClick={handleModal}>
+            <CustomIconButton color='secondary' onClick={handleModal}>
               <AddCircleIcon fontSize='large' />
-            </StyledIconButton>
+            </CustomIconButton>
           ) : (
             <Button
               variant='contained'
@@ -270,16 +270,8 @@ const FormControlStyled = styled(FormControl)(({ theme }) => ({
   },
 }));
 
-const StyledIconButton = styled(IconButton)(({ theme }) => ({
+const StyledIconButton = styled(CustomIconButton)(({ theme }) => ({
   marginRight: theme.spacing(1.5),
-  '&:focus': {
-    outline: 'none',
-    border: 'none',
-  },
-  '&.Mui-focusVisible': {
-    outline: `2px solid ${theme.palette.primary.main}`,
-    borderRadius: theme.shape.borderRadius,
-  },
 }));
 
 const ToolbarStyled = styled(Toolbar)(() => ({

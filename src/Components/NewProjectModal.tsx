@@ -26,7 +26,7 @@ const NewProjectModal: React.FC<NewProjectModalProps> = ({ open, onClose }) => {
       name: data.name,
       description: data.description || '',
       stars: Math.floor(Math.random() * 100),
-      createdAt: new Date().toISOString().split('T')[0],
+      createdAt: new Date(),
     });
     reset(); // Resetta il form dopo l'invio
     onClose(); // Chiude il modale dopo l'invio
@@ -42,12 +42,14 @@ const NewProjectModal: React.FC<NewProjectModalProps> = ({ open, onClose }) => {
             margin='normal'
             label='Project Name'
             required
+            inputProps={{ maxLength: 20 }}
             {...register('name', { required: true })}
           />
           <TextField
             fullWidth
             margin='normal'
             label='Description'
+            inputProps={{ maxLength: 50 }}
             {...register('description')}
           />
         </DialogContent>

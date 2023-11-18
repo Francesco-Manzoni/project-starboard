@@ -1,8 +1,9 @@
-import IconButton from '@mui/material/IconButton';
-import StarBorder from '@mui/icons-material/StarBorder';
 import Star from '@mui/icons-material/Star';
-import { updateStars } from '../db';
+import StarBorder from '@mui/icons-material/StarBorder';
 import { useQueryClient } from '@tanstack/react-query';
+import { updateStars } from '../db';
+import { CustomIconButton } from './CustomIconButton';
+import { Box, Typography } from '@mui/material';
 
 export const StarRating = ({
   stars,
@@ -20,11 +21,11 @@ export const StarRating = ({
   };
 
   return (
-    <>
-      {stars}
-      <IconButton onClick={handleStarClick}>
+    <Box display={'flex'} flexDirection={'row'} alignItems={'center'}>
+      <Typography>{stars}</Typography>
+      <CustomIconButton onClick={handleStarClick}>
         {alreadyStarred ? <Star /> : <StarBorder />}
-      </IconButton>
-    </>
+      </CustomIconButton>
+    </Box>
   );
 };
