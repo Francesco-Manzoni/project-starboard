@@ -41,6 +41,7 @@ const NewProjectModal: React.FC<NewProjectModalProps> = ({ open, onClose }) => {
             fullWidth
             margin='normal'
             label='Project Name'
+            required
             {...register('name', { required: true })}
           />
           <TextField

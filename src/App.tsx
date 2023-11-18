@@ -1,8 +1,12 @@
 import { Box } from '@mui/material';
+import React from 'react';
 import { Header } from './Components/Header';
 import { ProjectList } from './Components/ProjectList';
+import { useProjects } from './hooks/useProjects';
 
 function App() {
+  const { projects } = useProjects();
+  const [filteredData, setFilteredData] = React.useState(projects);
   return (
     <Box
       sx={{
@@ -12,8 +16,8 @@ function App() {
         flexDirection: 'column',
       }}
     >
-      <Header />
-      <ProjectList />
+      <Header projects={projects} setFilteredData={setFilteredData} />
+      <ProjectList projects={filteredData} />
     </Box>
   );
 }

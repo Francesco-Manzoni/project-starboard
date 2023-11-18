@@ -1,15 +1,16 @@
-import React from 'react';
+import Avatar from '@mui/material/Avatar';
+import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import Divider from '@mui/material/Divider';
-import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
-import { useProjects } from '../hooks/useProjects';
+import ListItemText from '@mui/material/ListItemText';
+import React from 'react';
 import { StarRating } from './StarRating';
-
-export const ProjectList = () => {
-  const { projects } = useProjects();
+import { Project } from '../db';
+interface ProjectListProps {
+  projects: Project[];
+}
+export const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
   return (
     <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
       {projects.map((project) => (
@@ -17,11 +18,14 @@ export const ProjectList = () => {
           <ListItem
             alignItems='flex-start'
             secondaryAction={
-              <StarRating
-                stars={project.stars}
-                alreadyStarred={project.alreadyStarred}
-                id={project.id!}
-              />
+              <>
+                <StarRating
+                  stars={project.stars}
+                  alreadyStarred={project.alreadyStarred}
+                  id={project.id!}
+                />
+                {project.createdAt?.toDateString()}
+              </>
             }
           >
             <ListItemAvatar>

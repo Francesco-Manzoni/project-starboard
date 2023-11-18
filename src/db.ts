@@ -4,7 +4,7 @@ export interface Project {
   id?: number;
   name: string;
   description: string;
-  createdAt?: string;
+  createdAt?: Date;
   stars: number;
   alreadyStarred?: boolean;
 }
@@ -15,7 +15,7 @@ export class MySubClassedDexie extends Dexie {
   constructor() {
     super('project-starboard');
     this.version(1).stores({
-      projects: '++id, name, description, stars, alreadyStarred',
+      projects: '++id, name, description, stars, alreadyStarred, createdAt',
     });
   }
 }
